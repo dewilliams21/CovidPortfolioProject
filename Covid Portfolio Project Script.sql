@@ -44,7 +44,7 @@ GROUP BY Location, population
 ORDER BY PercentPopulationInfected desc
 
 
--- Showing the Countries with the Highest Deatch Count per Population
+-- Showing the Countries with the Highest Death Count per Population
 
 SELECT location, MAX(cast(total_deaths as int)) AS TotalDeathCount
 FROM PortfolioProject..CovidDeaths
@@ -81,7 +81,7 @@ WHERE continent is not null
 ORDER BY 1,2
 
 
--- Looking at Toal Population vs Vaccinations
+-- Looking at Total Population vs Vaccinations
 
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(convert(int,vac.new_vaccinations)) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.date)
@@ -143,7 +143,7 @@ SELECT *, (RollingPeopleVaccinated/Population)*100
 FROM #PercentPopulationVaccinated
 
 
--- Creating View to store Datat for later Visualizations
+-- Creating View to store Data for later Visualizations
 
 CREATE VIEW PercentPopulationVaccinated AS
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
